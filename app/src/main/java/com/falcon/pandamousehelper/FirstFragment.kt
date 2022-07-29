@@ -32,6 +32,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         ExecuteAsRootBase.canRunRootCommands()
         val testDirectory = File("/data/local/tmp", "scripts")
         testDirectory.mkdir()
@@ -69,6 +70,7 @@ class FirstFragment : Fragment() {
                 return arrayListOf("cp -r ${scriptsDirectory.absolutePath} /data/local/tmp && chmod +x /data/local/tmp/scripts/inject2.sh && sh /data/local/tmp/scripts/inject2.sh")
             }
         }).execute()
+        //getActionBar()!!.setTitle("About")
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -188,12 +190,23 @@ class FirstFragment : Fragment() {
             // TODO Code to run in input/output exception
             Log.e("mausi", e.stackTraceToString())
         }
+
         Toast.makeText(requireActivity(), "mausi",Toast.LENGTH_SHORT).show()
         //context!!.cacheDir
         Toast.makeText(requireActivity(), context!!.cacheDir.absolutePath,Toast.LENGTH_LONG).show()
+        //getActionBar()!!.setTitle("mauso")
+        //getActionBar()!!.title = "mausi"
+        //Log.i("mausi", "${context.findFragmentById(R.id.secondFragment)}")
+        //Log.i("fragmento", "${this.getId()}")
+        getActionBar()!!.setDisplayShowTitleEnabled(true)
+        getActionBar()!!.setTitle("mhf")
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
+    }
+
+    private fun getActionBar(): androidx.appcompat.app.ActionBar? {
+        return (activity as MainActivity?)!!.getSupportActionBar()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

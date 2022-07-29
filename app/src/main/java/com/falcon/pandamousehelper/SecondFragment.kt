@@ -1,10 +1,12 @@
 package com.falcon.pandamousehelper
 
+import android.app.ActionBar
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.falcon.pandamousehelper.databinding.FragmentSecondBinding
 
@@ -23,10 +25,16 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        getActionBar()!!.setTitle("About");
+        //(activity as MainActivity?).setActionBarTitle("ABOUT")
+        Log.i("fragmento", "${this.getId()}")
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
 
+    }
+
+    private fun getActionBar(): androidx.appcompat.app.ActionBar? {
+        return (activity as MainActivity?)!!.getSupportActionBar()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

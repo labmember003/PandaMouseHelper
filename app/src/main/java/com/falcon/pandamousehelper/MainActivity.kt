@@ -3,7 +3,6 @@ package com.falcon.pandamousehelper
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,9 +10,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.falcon.pandamousehelper.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
-import java.io.DataOutputStream
-import java.io.IOException
-import java.io.InputStream
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -21,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //getActionBar()!!.setDisplayShowTitleEnabled(true)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -78,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             //toastMessage("not root")
         }
          */
+        //getActionBar()!!.setDisplayShowTitleEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -91,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.secondFragment -> true
             else -> super.onOptionsItemSelected(item)
         }
     }

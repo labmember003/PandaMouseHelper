@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">Panda Mouse Helper</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <string name="about_text"> Panda Mouse Pro Helper [ROOT] helps activating Panda Mouse Pro for android 12 without using a pc (your device must be rooted for activation)
+        (On activation from panda mouse pro app itself, keyboard does not work in android 12, activation from this app will fix that :) ). So just deny superuser permissions to panda mouse pro app and
+        give superuser permission to this app and wait for a minute and you are all set!
+    </string>
+    <string name="about">About :</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
