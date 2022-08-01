@@ -1,6 +1,5 @@
 package com.falcon.pandamousehelper
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater

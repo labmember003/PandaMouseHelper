@@ -2,6 +2,8 @@ package com.falcon.pandamousehelper;
 
 import android.util.Log;
 
+import androidx.fragment.app.FragmentManager;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -32,6 +34,7 @@ public abstract class ExecuteAsRootBase
                 retval = false;
                 exitSu = false;
                 Log.d("ROOT", "Can't get root access or denied by user");
+
             }
             else if (true == currUid.contains("uid=0"))
             {
@@ -63,6 +66,8 @@ public abstract class ExecuteAsRootBase
 
         return retval;
     }
+
+
 
     public final boolean execute()
     {

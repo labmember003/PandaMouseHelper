@@ -11,8 +11,22 @@
         (On activation from panda mouse pro app itself, keyboard does not work in android 12, activation from this app will fix that :) ). So just deny superuser permissions to panda mouse pro app and
         give superuser permission to this app and wait for a minute and you are all set!
     </string>
-    <string name="about">About :</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_first_fragment"> Panda Mouse Pro Helper [ROOT] helps activating Panda Mouse Pro for android 12 without using a pc (your device must be rooted for activation)
+        (On activation from panda mouse pro app itself, keyboard does not work in android 12, activation from this app will fix that :) ). So just deny superuser permissions to panda mouse pro app and
+        give superuser permission to this app and wait for a minute and you are all set! \n \n
+
+        Panda Mouse Pro: \n
+        Panda Mouse Pro is a specifically designed keymapper for Keyboard and Mouse. \n
+        Compare to classical keymapper, its unique features: \n
+        1. Run games directly without cloning \n
+        2. Support Google Play login \n
+        3. Wont be banned by some games in which duplication running is not allowed.
+    </string>
+    <string name="about">About :</string>
+    <string name="activate">Activate</string>
+    <string name="not_root">device not rooted</string>
+    <string name="hello">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="quit">QUIT</string>
 </resources>

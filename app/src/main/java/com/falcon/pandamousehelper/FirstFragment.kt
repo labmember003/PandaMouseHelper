@@ -1,21 +1,22 @@
 package com.falcon.pandamousehelper
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.falcon.pandamousehelper.databinding.FragmentFirstBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.io.*
 import java.util.*
-import java.io.File
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -71,8 +72,34 @@ class FirstFragment : Fragment() {
             }
         }).execute()
         //getActionBar()!!.setTitle("About")
+       // getActionBar()!!.setDisplayShowTitleEnabled(true)
+//        getActionBar()!!.setTitle("mhf")
+        //val actionbar = getActionBar()
+        //actionbar!!.setTitle("your title goes here.");
+        //(activity as AppCompatActivity?)!!.supportActionBar!!.setTitle("gfd")
+        //showdialog()
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    public fun showdialog() {
+        var dialog = Dialog(context!!)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.custom_dialog2)
+        var img1 = dialog.findViewById<ImageView>(R.id.dialog_imgview1)
+        var text1 = dialog.findViewById<TextView>(R.id.dialog_textview1)
+        var button1 = dialog.findViewById<Button>(R.id.dialog_button1)
+        button1.setOnClickListener{
+            Log.i("dialog", "mausi")
+            System.exit(0)
+        }
+        dialog.show()
+        /*
+        showdialog()
+        write above line jaaha bhi dialog display krna hai
+         */
     }
 
     fun onCreateView2(
@@ -201,12 +228,25 @@ class FirstFragment : Fragment() {
         getActionBar()!!.setDisplayShowTitleEnabled(true)
         getActionBar()!!.setTitle("mhf")
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
 
     }
 
+
+
     private fun getActionBar(): androidx.appcompat.app.ActionBar? {
         return (activity as MainActivity?)!!.getSupportActionBar()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
+                || super.onOptionsItemSelected(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
