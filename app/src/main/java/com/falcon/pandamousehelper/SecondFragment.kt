@@ -24,7 +24,6 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        getActionBar()!!.setTitle("About");
         //(activity as MainActivity?).setActionBarTitle("ABOUT")
         Log.i("fragmento", "${this.getId()}")
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
@@ -38,6 +37,7 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getActionBar()!!.setTitle("About");
 
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)

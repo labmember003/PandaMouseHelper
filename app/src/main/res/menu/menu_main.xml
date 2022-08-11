@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.falcon.pandamousehelper.MainActivity">
     <item
-        android:id="@+id/SecondFragment"
+        android:id="@+id/mausiChips"
         android:orderInCategory="100"
         android:title="@string/action_about"
 

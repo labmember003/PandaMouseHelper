@@ -2,19 +2,19 @@
     <string name="app_name">Panda Mouse Helper</string>
     <string name="action_about">About</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
+    <string name="first_fragment_label">@string/app_name</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="about_text"> Panda Mouse Pro Helper [ROOT] helps activating Panda Mouse Pro for android 12 without using a pc (your device must be rooted for activation)
         (On activation from panda mouse pro app itself, keyboard does not work in android 12, activation from this app will fix that :) ). So just deny superuser permissions to panda mouse pro app and
-        give superuser permission to this app and wait for a minute and you are all set!
+        give superuser permission to this app and press ACTIVATE button and you are all set!
     </string>
 
     <string name="hello_first_fragment"> Panda Mouse Pro Helper [ROOT] helps activating Panda Mouse Pro for android 12 without using a pc (your device must be rooted for activation)
         (On activation from panda mouse pro app itself, keyboard does not work in android 12, activation from this app will fix that :) ). So just deny superuser permissions to panda mouse pro app and
-        give superuser permission to this app and wait for a minute and you are all set! \n \n
+        give superuser permission to this app and press ACTIVATE button and you are all set! \n \n
 
         Panda Mouse Pro: \n
         Panda Mouse Pro is a specifically designed keymapper for Keyboard and Mouse. \n
@@ -25,7 +25,7 @@
     </string>
     <string name="about">About :</string>
     <string name="activate">Activate</string>
-    <string name="not_root">device not rooted</string>
+    <string name="not_root">Device Not Rooted</string>
     <string name="hello">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="quit">QUIT</string>

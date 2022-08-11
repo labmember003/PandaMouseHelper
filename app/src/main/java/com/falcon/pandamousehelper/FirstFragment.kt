@@ -34,50 +34,6 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        ExecuteAsRootBase.canRunRootCommands()
-        val testDirectory = File("/data/local/tmp", "scripts")
-        testDirectory.mkdir()
-        // TEST END
-        val scriptsDirectory = File(context?.cacheDir, "scripts")
-
-        if (scriptsDirectory.exists()) {
-            scriptsDirectory.deleteRecursively()
-        }
-        scriptsDirectory.mkdir()
-
-        Log.i("mausi", "${context?.cacheDir}")
-
-        Log.i("mausi", "directory created")
-        listOf("inject2.sh", "inject_wrapper.sh", "daemon.dex", "config.ini"
-            , "com.panda.mouselibinject.so", "com.panda.mouseinject.dex", "com.panda.gamepadlibinject.so"
-            , "com.panda.gamepadinject.dex").forEach() {
-            val inputStream: InputStream = context!!.assets!!.open("scripts/$it")
-            val file = File(scriptsDirectory, it)
-            file.createNewFile()
-            FileOutputStream(file).use { output ->
-                val buffer =
-                    ByteArray(4 * 1024) // or other buffer size
-                var read: Int
-                while (inputStream.read(buffer).also { read = it } != -1) {
-                    output.write(buffer, 0, read)
-                }
-                output.flush()
-                inputStream.close()
-            }
-        }
-        Log.i("mausi", "copied all files")
-        (object : ExecuteAsRootBase() {
-            override fun getCommandsToExecute(): ArrayList<String> {
-                return arrayListOf("cp -r ${scriptsDirectory.absolutePath} /data/local/tmp && chmod +x /data/local/tmp/scripts/inject2.sh && sh /data/local/tmp/scripts/inject2.sh")
-            }
-        }).execute()
-        //getActionBar()!!.setTitle("About")
-       // getActionBar()!!.setDisplayShowTitleEnabled(true)
-//        getActionBar()!!.setTitle("mhf")
-        //val actionbar = getActionBar()
-        //actionbar!!.setTitle("your title goes here.");
-        //(activity as AppCompatActivity?)!!.supportActionBar!!.setTitle("gfd")
-        //showdialog()
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
@@ -93,7 +49,8 @@ class FirstFragment : Fragment() {
         var button1 = dialog.findViewById<Button>(R.id.dialog_button1)
         button1.setOnClickListener{
             Log.i("dialog", "mausi")
-            System.exit(0)
+            //System.exit(0)
+            activity!!.finish()
         }
         dialog.show()
         /*
@@ -228,7 +185,7 @@ class FirstFragment : Fragment() {
         getActionBar()!!.setDisplayShowTitleEnabled(true)
         getActionBar()!!.setTitle("mhf")
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
         return binding.root
 
     }
@@ -245,15 +202,68 @@ class FirstFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
-                || super.onOptionsItemSelected(item)
+        //return NavigationUI.onNavDestinationSelected(item, view!!.findNavController()) || super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.mausiChips -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            if (!ExecuteAsRootBase.canRunRootCommands()) {
+                showdialog()
+            }
+            ExecuteAsRootBase.canRunRootCommands()
+            val testDirectory = File("/data/local/tmp", "scripts")
+            testDirectory.mkdir()
+            // TEST END
+            val scriptsDirectory = File(context?.cacheDir, "scripts")
+
+            if (scriptsDirectory.exists()) {
+                scriptsDirectory.deleteRecursively()
+            }
+            scriptsDirectory.mkdir()
+
+            Log.i("mausi", "${context?.cacheDir}")
+
+            Log.i("mausi", "directory created")
+            listOf("inject2.sh", "inject_wrapper.sh", "daemon.dex", "config.ini"
+                , "com.panda.mouselibinject.so", "com.panda.mouseinject.dex", "com.panda.gamepadlibinject.so"
+                , "com.panda.gamepadinject.dex").forEach() {
+                val inputStream: InputStream = context!!.assets!!.open("scripts/$it")
+                val file = File(scriptsDirectory, it)
+                file.createNewFile()
+                FileOutputStream(file).use { output ->
+                    val buffer =
+                        ByteArray(4 * 1024) // or other buffer size
+                    var read: Int
+                    while (inputStream.read(buffer).also { read = it } != -1) {
+                        output.write(buffer, 0, read)
+                    }
+                    output.flush()
+                    inputStream.close()
+                }
+            }
+            Log.i("mausi", "copied all files")
+            (object : ExecuteAsRootBase() {
+                override fun getCommandsToExecute(): ArrayList<String> {
+                    return arrayListOf("cp -r ${scriptsDirectory.absolutePath} /data/local/tmp && chmod +x /data/local/tmp/scripts/inject2.sh && sh /data/local/tmp/scripts/inject2.sh")
+                }
+            }).execute()
+            //getActionBar()!!.setTitle("About")
+            // getActionBar()!!.setDisplayShowTitleEnabled(true)
+//        getActionBar()!!.setTitle("mhf")
+            //val actionbar = getActionBar()
+            //actionbar!!.setTitle("your title goes here.");
+            //(activity as AppCompatActivity?)!!.supportActionBar!!.setTitle("gfd")
+            //showdialog()
         }
     }
 
